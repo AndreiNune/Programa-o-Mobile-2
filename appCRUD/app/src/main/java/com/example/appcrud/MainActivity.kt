@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
         factoryProducer = {
             object :ViewModelProvider.Factory{
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return PessoaViewModel(Repository(db) as T)
+                    return PessoaViewModel(Repository(db)) as T
                 }
             }
         }
@@ -132,7 +132,7 @@ fun App(viewModel: PessoaViewModel) {
             TextField(
                 value = telefone,
                 onValueChange = {telefone = it },
-                label = { Text(text = "Nome:")})
+                label = { Text(text = "Telefone:")})
         }
         Row(
             Modifier

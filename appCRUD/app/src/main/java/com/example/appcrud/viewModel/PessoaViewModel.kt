@@ -20,6 +20,4 @@ class PessoaViewModel(private val repository: Repository): ViewModel() {
             repository.deletePessoa(pessoa)
         }
     }
-
-
 }
