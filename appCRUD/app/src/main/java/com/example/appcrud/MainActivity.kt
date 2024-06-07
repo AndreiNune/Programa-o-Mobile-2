@@ -103,9 +103,14 @@ fun App(viewModel: PessoaViewModel,  mainActivity: MainActivity) {
         pessoaList = it
     }
 
+    // Da linha 85 até a linha 96 está sendo declarada
+    // variaveis e das linhas 98 até 104 foi construida
+    // uma varivel que ira listar os resgistros de Pessoa.
+
+
     Column(
         Modifier
-            .background(Color.Black)
+            .background(Color.White)
     ) {
         Row(
             Modifier
@@ -133,7 +138,7 @@ fun App(viewModel: PessoaViewModel,  mainActivity: MainActivity) {
             TextField(
                 value = nome,
                 onValueChange = { nome = it },
-                label = { Text(text = "Nome:") })
+                label = { Text(text = "Nome:") }) // Permite o registro do nome na tabela
         }
         Row(
             Modifier
@@ -148,7 +153,19 @@ fun App(viewModel: PessoaViewModel,  mainActivity: MainActivity) {
             TextField(
                 value = telefone,
                 onValueChange = { telefone = it },
-                label = { Text(text = "Telefone:") })
+                label = { Text(text = "Telefone:") }) // Permite o registro do telefone na tabela.
+        }
+
+        Row(
+            Modifier
+                .fillMaxWidth(),
+            Arrangement.Center
+        ) {
+            Button(onClick = {
+                viewModel.upsertPessoa(pessoa)
+            }) {
+                Text(text = "Cadastrar") // Botão exectua upsert.
+            }
         }
 
         Divider()
@@ -157,7 +174,7 @@ fun App(viewModel: PessoaViewModel,  mainActivity: MainActivity) {
                 Row(
                     Modifier
                         .clickable {
-                            viewModel.deletePessoa(pessoa)
+                            viewModel.deletePessoa(pessoa) // Torna o registro clicavel e executa delete
                         }
                         .fillMaxWidth(),
                     Arrangement.Center
@@ -167,28 +184,17 @@ fun App(viewModel: PessoaViewModel,  mainActivity: MainActivity) {
                             .fillMaxWidth(0.5f),
                         Arrangement.Center
                     ) {
-                        Text(text = "${pessoa.nome}")
+                        Text(text = "${pessoa.nome}") // Chama o registro dentro do campo nome
                     }
                     Column(
                         Modifier
                             .fillMaxWidth(0.5f),
                         Arrangement.Center
                     ) {
-                        Text(text = "${pessoa.telefone}")
+                        Text(text = "${pessoa.telefone}") // Chama o registro dentro do campo telefone
                     }
                 }
                 Divider()
-                Row(
-                    Modifier
-                        .fillMaxWidth(),
-                    Arrangement.Center
-                ) {
-                    Button(onClick = {
-                        viewModel.upsertPessoa(pessoa)
-                    }) {
-                        Text(text = "Cadastrar")
-                    }
-                }
             }
         }
     }

@@ -6,6 +6,10 @@ import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
+
+// Aqui está sendo configurada uma classe que chama pessoa e
+// atribui as funções de upsert, delete e select a pessoa.
+
 @Dao
 interface PessoaDao {
     @Upsert

@@ -6,6 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.appcrud.roomDB.Pessoa
 import kotlinx.coroutines.launch
 
+
+// Aqui está sendo criada uma class que detem as
+// funções de upsert e delete aplicadas em Pessoa.
 class PessoaViewModel(private val repository: Repository): ViewModel() {
     fun getPessoa() = repository.getAllPessoa().asLiveData(viewModelScope.coroutineContext)
 
